@@ -355,6 +355,9 @@ where
         map.serialize_entry("type", "Feature")?;
         map.serialize_entry("geometry", &geometry)?;
         map.serialize_entry("properties", &json_object)?;
+        if let Some(id) = json_object.get("id") {
+            map.serialize_entry("id", id)?;
+        }
         map.end()
     }
 }
